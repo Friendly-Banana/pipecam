@@ -7,7 +7,7 @@ Mikrofon Steuerung durch Gesten
 - Webcam mit virtualcam für Zoom
 
 # Gesten
-An Geste
+An Geste (Beispielvideo)
 
 ![Gordon Ramsay swiping](https://c.tenor.com/XsEnfr0dKp4AAAAC/gordon-ramsey-swipe.gif)
 
