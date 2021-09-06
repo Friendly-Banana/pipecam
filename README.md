@@ -2,9 +2,9 @@
 Mikrofon Steuerung durch Gesten 
 
 # Funktion
-Handerkennung durch mediapipe
-Mikrofon Steuerung mit Zoom SDK
-Webcam mit virtualcam für Zoom
+- Handerkennung durch mediapipe 
+- Mikrofon Steuerung mit Zoom SDK
+- Webcam mit virtualcam für Zoom
 
 # Gesten
 An Geste
