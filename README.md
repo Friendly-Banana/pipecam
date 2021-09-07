@@ -4,11 +4,11 @@ einfache Mikrofon Steuerung durch Gesten
 # Funktionen
 - erkennt beide Hände, rechte Hand hat Vorrang
 - neue Virtualcam, um mit allen Anwendungen zu funktionieren
-- 
+
 # Bestandteile
 - [x] Handerkennung durch mediapipe
-- [] Webcam mit virtualcam für Zoom
-- [] Mikrofon Steuerung mit Zoom SDK
+- [ ] Webcam mit virtualcam für Zoom
+- [ ] Mikrofon Steuerung mit Zoom SDK
 
 # Gesten
 An Geste (Beispielvideo)
