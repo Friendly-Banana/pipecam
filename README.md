@@ -1,10 +1,14 @@
 # pipecam
-Mikrofon Steuerung durch Gesten 
+einfache Mikrofon Steuerung durch Gesten 
 
-# Funktion
-- Handerkennung durch mediapipe 
-- Mikrofon Steuerung mit Zoom SDK
-- Webcam mit virtualcam für Zoom
+# Funktionen
+- erkennt beide Hände, rechte Hand hat Vorrang
+- neue Virtualcam, um mit allen Anwendungen zu funktionieren
+- 
+# Bestandteile
+- [x] Handerkennung durch mediapipe
+- [] Webcam mit virtualcam für Zoom
+- [] Mikrofon Steuerung mit Zoom SDK
 
 # Gesten
 An Geste (Beispielvideo)
@@ -12,4 +16,4 @@ An Geste (Beispielvideo)
 ![Gordon Ramsay swiping](https://c.tenor.com/XsEnfr0dKp4AAAAC/gordon-ramsey-swipe.gif)
 
 Aus Geste
-wie oben, nur gespiegelt
+wie oben, nur von links nach rechts
