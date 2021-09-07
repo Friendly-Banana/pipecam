@@ -1,5 +1,4 @@
 # Gabriels Zeug
 env
 .vscode
-
-# Dorothees Zeug
+__pycache__
