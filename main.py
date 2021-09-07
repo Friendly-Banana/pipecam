@@ -1,4 +1,5 @@
-from help import info
+from config import GESTURE_TRESHOLD
+from delta_movement import Hand, action, get_mov, update_positions
 import cv2
 import mediapipe as mp
 mp_drawing = mp.solutions.drawing_utils
@@ -31,11 +32,20 @@ with mp_hands.Hands(
         if results.multi_hand_landmarks:
             # Punkt Positionen (x, y, z), Info
             for hand_landmarks, hand_info in zip(results.multi_hand_landmarks, results.multi_handedness):
-                # rechte Hand
-                if hand_info.classification[0].label == "Right":
-                    info(mp_hands.HandLandmark)
-                mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS, mp_drawing_styles.get_default_hand_landmarks_style(), mp_drawing_styles.get_default_hand_connections_style())
-        cv2.imshow('MediaPipe Hands', image)
+                update_positions(
+                    hand_landmarks, hand_info.classification[0].label)
+                mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS, mp_drawing_styles.get_default_hand_landmarks_style(
+                ), mp_drawing_styles.get_default_hand_connections_style())
+        # recognize gesture
+        action_right, action_left = action(
+            get_mov(Hand.RIGHT)), action(get_mov(Hand.LEFT))
+        if action_right == action_left or not action_right or not action_left:
+            if action_right:
+                print(action_right)
+            elif action_left:
+                print(action_left)
+        # TODO Send to webcam
+        cv2.imshow('PipeCam Hands', image)
         if cv2.waitKey(5) & 0xFF == 27:
             break
 cv2.destroyAllWindows()
