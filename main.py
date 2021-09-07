@@ -1,4 +1,4 @@
-from config import GESTURE_TRESHOLD
+from config import GESTURE_TRESHOLD, MIN_DETECTION_CONFIDENCE, MIN_TRACKING_CONFIDENCE
 from delta_movement import Hand, action, get_mov, update_positions
 import cv2
 import mediapipe as mp
@@ -9,8 +9,8 @@ mp_hands = mp.solutions.hands
 # For webcam input:
 cap = cv2.VideoCapture(0)
 with mp_hands.Hands(
-        min_detection_confidence=0.5,
-        min_tracking_confidence=0.5) as hands:
+        min_detection_confidence=MIN_DETECTION_CONFIDENCE,
+        min_tracking_confidence=MIN_TRACKING_CONFIDENCE) as hands:
     while cap.isOpened():
         success, image = cap.read()
         if not success:
