@@ -9,7 +9,7 @@ einfache Mikrofon Steuerung durch Gesten
 1. [Python](https://www.python.org/downloads/) installieren
 2. Virtuelle Kamera installieren
 - Windows: [OBS](https://obsproject.com/download) installieren
-- Debian: `sudo apt install v4l2loopback-dkms && sudo modprobe v4l2loopback devices=1`
+- Debian: siehe unten
 3. Projekt runterladen
 4. `python3 -m pip install -r requirements.txt` ausführen, um Abhängigkeiten zu installieren
 5. `python3 main.py` ausführen
@@ -26,3 +26,10 @@ An Geste (Beispielvideo)
 
 Aus Geste
 wie oben, nur von links nach rechts
+
+# Debian virtuelle Kamera
+`sudo apt install v4l2loopback-dkms`
+`sudo echo options v4l2loopback nr_devices=1 exclusive_caps=1,1,1,1,1,1,1,1 video_nr=2 card_label=NAME > /etc/modprobe.d/v4l2loopback.conf`
+exclusive_caps muss mind. 8 Zahlen sein 
+Autostart
+`sudo echo v4l2loopback > /etc/modules-load.d/v4l2loopback.conf`
