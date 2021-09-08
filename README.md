@@ -9,7 +9,7 @@ einfache Mikrofon Steuerung durch Gesten
 1. [Python](https://www.python.org/downloads/) installieren
 2. Virtuelle Kamera installieren
 - Windows: [OBS](https://obsproject.com/download) installieren
-- Debian: siehe unten
+- Debian: siehe [hier](#debian-virtuelle-kamera)
 3. Projekt runterladen
 4. `python3 -m pip install -r requirements.txt` ausführen, um Abhängigkeiten zu installieren
 5. `python3 main.py` ausführen
