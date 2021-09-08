@@ -1,16 +1,26 @@
-from config import GESTURE_TRESHOLD, MIN_DETECTION_CONFIDENCE, MIN_TRACKING_CONFIDENCE
-from delta_movement import Hand, action, get_mov, update_positions
 import cv2
 import mediapipe as mp
+import pyvirtualcam
+from os import system
+from config import (MIN_DETECTION_CONFIDENCE,
+                    MIN_TRACKING_CONFIDENCE)
+from gestures import action, update_positions
+
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
 
+# restart camera
+#system("sudo modprobe -r v4l2loopback && sudo modprobe v4l2loopback")
 # For webcam input:
 cap = cv2.VideoCapture(0)
-with mp_hands.Hands(
-        min_detection_confidence=MIN_DETECTION_CONFIDENCE,
-        min_tracking_confidence=MIN_TRACKING_CONFIDENCE) as hands:
+cap_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+cap_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+cap_fps = int(cap.get(cv2.CAP_PROP_FPS))
+if cap_fps == 0:
+    exit("Couldn't get camera")
+with mp_hands.Hands(min_detection_confidence=MIN_DETECTION_CONFIDENCE,
+                    min_tracking_confidence=MIN_TRACKING_CONFIDENCE) as hands, pyvirtualcam.Camera(width=cap_width, height=cap_height, fps=cap_fps, device="/dev/video2") as cam:
     while cap.isOpened():
         success, image = cap.read()
         if not success:
@@ -25,6 +35,8 @@ with mp_hands.Hands(
         # pass by reference.
         image.flags.writeable = False
         results = hands.process(image)
+        # Send image to webcam
+        cam.send(image)
 
         # Draw the hand annotations on the image.
         image.flags.writeable = True
@@ -37,16 +49,13 @@ with mp_hands.Hands(
                 mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS, mp_drawing_styles.get_default_hand_landmarks_style(
                 ), mp_drawing_styles.get_default_hand_connections_style())
         # recognize gesture
-        action_right, action_left = action(
-            get_mov(Hand.RIGHT)), action(get_mov(Hand.LEFT))
-        if action_right == action_left or not action_right or not action_left:
-            if action_right:
-                print(action_right)
-            elif action_left:
-                print(action_left)
-        # TODO Send to webcam
-        cv2.imshow('PipeCam Hands', image)
+        print(action())
+        # show image
+        cv2.imshow('PipeCam', image)
         if cv2.waitKey(5) & 0xFF == 27:
             break
-cv2.destroyAllWindows()
+        # sleep to keep frame rate
+        cam.sleep_until_next_frame()
+
 cap.release()
+cv2.destroyAllWindows()
