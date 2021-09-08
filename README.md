@@ -16,8 +16,8 @@ einfache Mikrofon Steuerung durch Gesten
 
 # Bestandteile
 - [x] Handerkennung durch [mediapipe](https://mediapipe.dev)
-- [ ] Webcam mit [pyvirtualcam](https://github.com/letmaik/pyvirtualcam) für Zoom
-- [ ] Mikrofon Steuerung mit Zoom SDK
+- [x] Webcam mit [pyvirtualcam](https://github.com/letmaik/pyvirtualcam)
+- [ ] Mikrofon Steuerung
 
 # Gesten
 An Geste (Beispielvideo)
