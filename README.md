@@ -27,6 +27,9 @@ An Geste (Beispielvideo)
 Aus Geste
 wie oben, nur von links nach rechts
 
+# Konfiguration
+Werte in `config.py` verändern
+
 # Linux virtuelle Kamera
 ```
 sudo apt install v4l2loopback-dkms # Kernel modul installieren
