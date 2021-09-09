@@ -2,3 +2,5 @@
 env
 .vscode
 __pycache__
+poc-virtual-assistant
+secrets
