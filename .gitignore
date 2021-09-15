@@ -1,7 +1,6 @@
 # Zeug
 env
-.vscode
+.*
 __pycache__
 secrets
-System*
-zoom*
+Cplusplus
