@@ -1,5 +1,6 @@
 import cv2
 import mediapipe as mp
+from numpy.lib.type_check import imag
 import pyvirtualcam
 from os import system
 from config import (MIN_DETECTION_CONFIDENCE,
@@ -39,8 +40,6 @@ with mp_hands.Hands(min_detection_confidence=MIN_DETECTION_CONFIDENCE,
         # pass by reference.
         image.flags.writeable = False
         results = hands.process(image)
-        # Send image to webcam
-        cam.send(image)
 
         # Draw the hand annotations on the image.
         image.flags.writeable = True
@@ -59,11 +58,13 @@ with mp_hands.Hands(min_detection_confidence=MIN_DETECTION_CONFIDENCE,
         elif to_do == Action.MICRO_ON:
             zoom.set_mute(True)
         elif to_do == Action.EXTRA:
-            cam.send(image)
+            image = cv2.putText(image, "Guten Morgen, Frau Kanzlerin", (int(cap_width * 0.3), int(cap_height * 0.9)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255))
+        # Send image to webcam
+        cam.send(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
         # show image
-        cv2.imshow('PipeCam', image)
-        if cv2.waitKey(5) & 0xFF == 27:
-            break
+        #cv2.imshow('PipeCam', image)
+        #if cv2.waitKey(5) & 0xFF == 27:
+        #    break
         # sleep to keep frame rate
         cam.sleep_until_next_frame()
 
