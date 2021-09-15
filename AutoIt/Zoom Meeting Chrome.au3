@@ -15,9 +15,10 @@ $muted = False
 Opt("MouseCoordMode", 0)
 WinWait($MEETING)
 WinActivate($MEETING)
+Sleep(3000)
 SetMute(True)
-Send($SHORTCUTS.Quit)
-Quit()
+;Send($SHORTCUTS.Quit)
+;Quit()
 
 Func SetMute($value)
 	If $muted <> $value Then
