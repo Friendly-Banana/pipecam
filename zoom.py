@@ -12,7 +12,7 @@ def detect_mute():
     return autoit.pixel_get_color(50, y - 50) == (0,)
 
 def open_meeting() -> bool:
-    shell("firefox.exe", "https://us05web.zoom.us/j/6453307470?pwd=c2lld1I1ZVBEZkczek1CS3libzQ5UT09#success")
+    shell("Start firefox.exe https://us05web.zoom.us/j/6453307470?pwd=c2lld1I1ZVBEZkczek1CS3libzQ5UT09#success")
     autoit.win_wait_active(MEETING)
     return True
 

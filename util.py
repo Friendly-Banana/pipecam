@@ -33,3 +33,4 @@ def info(obj):
 
 if __name__ == "main":
     jwt_token()
+    

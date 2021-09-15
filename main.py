@@ -5,7 +5,7 @@ from os import system
 from config import (MIN_DETECTION_CONFIDENCE,
                     MIN_TRACKING_CONFIDENCE)
 from gestures import Action, action, update_positions
-from zoom import set_mute
+import zoom
 
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
@@ -22,7 +22,9 @@ if cap_fps == 0:
     exit("Couldn't get camera")
 with mp_hands.Hands(min_detection_confidence=MIN_DETECTION_CONFIDENCE,
                     min_tracking_confidence=MIN_TRACKING_CONFIDENCE) as hands, pyvirtualcam.Camera(
-        width=cap_width, height=cap_height, fps=cap_fps, device="OBS Virtual Camera") as cam:
+        width=cap_width, height=cap_height, fps=cap_fps) as cam:
+    zoom.open_meeting()
+    print("Meeting entered")
     while cap.isOpened():
         success, image = cap.read()
         if not success:
@@ -51,12 +53,12 @@ with mp_hands.Hands(min_detection_confidence=MIN_DETECTION_CONFIDENCE,
                 mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS, mp_drawing_styles.get_default_hand_landmarks_style(
                 ), mp_drawing_styles.get_default_hand_connections_style())
         # recognize gesture
-        action = action()
-        if action == Action.MICRO_ON:
-            set_mute(False)
-        elif action == Action.MICRO_ON:
-            set_mute(True)
-        elif action == Action.EXTRA:
+        to_do = action()
+        if to_do == Action.MICRO_ON:
+            zoom.set_mute(False)
+        elif to_do == Action.MICRO_ON:
+            zoom.set_mute(True)
+        elif to_do == Action.EXTRA:
             cam.send(image)
         # show image
         cv2.imshow('PipeCam', image)
