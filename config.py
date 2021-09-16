@@ -1,11 +1,11 @@
-
-# The amount of positions to keep for computing the movement
+# default: 10
 POS_TO_KEEP = 10
 
 # All following: type: float, range: 0 - 1
-# % of screen
+# default: 0.3, in % of screen
 GESTURE_TRESHOLD = 0.3
-EXTRA_MAX_DISTANCE = 0.04
+# default: 0.05, in % of screen
+EXTRA_MAX_DISTANCE = 0.05
 
 # default: 0.5
 MIN_DETECTION_CONFIDENCE = 0.5
