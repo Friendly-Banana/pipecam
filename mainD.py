@@ -4,7 +4,7 @@ import cv2
 import signal
 import sys
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(3)
 cam = pyvirtualcam.Camera(width=640, height=480, fps=20, device='/dev/video7')
 print(f'Using virtual camera: {cam.device}')
 

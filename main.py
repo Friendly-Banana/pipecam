@@ -15,7 +15,7 @@ mp_hands = mp.solutions.hands
 # restart camera
 #system("sudo modprobe -r v4l2loopback && sudo modprobe v4l2loopback")
 # For webcam input:
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(3)
 cap_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 cap_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 cap_fps = int(cap.get(cv2.CAP_PROP_FPS))
