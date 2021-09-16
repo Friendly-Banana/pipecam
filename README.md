@@ -16,11 +16,6 @@ einfache Mikrofon Steuerung durch Gesten
 4. `python3 -m pip install -r requirements.txt` ausführen, um Abhängigkeiten zu installieren
 5. `python3 main.py` ausführen
 
-# Bestandteile
-- [x] Handerkennung durch [mediapipe](https://mediapipe.dev)
-- [x] Webcam mit [pyvirtualcam](https://github.com/letmaik/pyvirtualcam)
-- [x] Mikrofon Steuerung durch [pyautoit](https://pypi.org/project/PyAutoIt/)
-
 # Gesten
 - An Geste (Beispielvideo)
 ![Gordon Ramsay swiping](https://c.tenor.com/XsEnfr0dKp4AAAAC/gordon-ramsey-swipe.gif)
@@ -33,18 +28,18 @@ einfache Mikrofon Steuerung durch Gesten
 
 # Konfiguration
 Werte in `config.py`
-- Anzahl der Bilder, aus denen die Bewegung der Hände errechnet wird
-    POS_TO_KEEP = 10
+| Name                     | Standardwert | Funktion                                                                   |
+|--------------------------|--------------|----------------------------------------------------------------------------|
+| POS_TO_KEEP              | 10           | Anzahl der Bilder, aus denen die Bewegung der Hände errechnet wird         |
+| GESTURE_TRESHOLD         | 0.3          | Bewegung nötig für Mikro an/aus Geste                                      |
+| EXTRA_MAX_DISTANCE       | 0.05         | Maximaler Abstand der Finger bei der Raute                                 |
+| MIN_DETECTION_CONFIDENCE | 0.5          | Mediapipe Wert, benötigte Sicherheit der AI, um etwas als Hand zu erkennen |
+| MIN_TRACKING_CONFIDENCE  | 0.5          | -"-                                                                        |
 
-- Bewegung nötig für Mikro an/aus Geste
-    GESTURE_TRESHOLD = 0.3
-
-- Maximaler Abstand der Finger bei der Raute
-    EXTRA_MAX_DISTANCE = 0.05
-
-- Mediapipes Werte, benötigte Sicherheit der AI, um etwas als Hand zu erkennen
-    MIN_DETECTION_CONFIDENCE = 0.5
-    MIN_TRACKING_CONFIDENCE = 0.5
+# Benutzte Module
+- [x] Handerkennung durch [mediapipe](https://mediapipe.dev)
+- [x] Virtuelle Kamera mit [pyvirtualcam](https://github.com/letmaik/pyvirtualcam)
+- [x] Mikrofon Steuerung durch [pyautoit](https://pypi.org/project/PyAutoIt/)
 
 # Linux virtuelle Kamera
 Ubuntu / Debian
