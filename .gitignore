@@ -1,6 +1,7 @@
 # Zeug
 env
-.*
+.vscode
 __pycache__
+.*
 secrets
 AutoIt
