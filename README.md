@@ -30,7 +30,7 @@ einfache Mikrofon Steuerung durch Gesten
 Werte in `config.py`
 | Name                     | Standardwert | Funktion                                                                   |
 |--------------------------|--------------|----------------------------------------------------------------------------|
-| POS_TO_KEEP              | 10           | Anzahl der Bilder, aus denen die Bewegung der Hände errechnet wird         |
+| POS_TO_KEEP              | 10           | Anzahl der Positionen, aus denen die Bewegung der Hände errechnet wird     |
 | GESTURE_TRESHOLD         | 0.3          | Bewegung nötig für Mikro an/aus Geste                                      |
 | EXTRA_MAX_DISTANCE       | 0.05         | Maximaler Abstand der Finger bei der Raute                                 |
 | MIN_DETECTION_CONFIDENCE | 0.5          | Mediapipe Wert, benötigte Sicherheit der AI, um etwas als Hand zu erkennen |
