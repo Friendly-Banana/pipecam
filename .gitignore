@@ -1,7 +1,13 @@
 # Zeug
-env
-.vscode
 __pycache__
 .*
 secrets
 AutoIt
+
+# venv
+share
+lib64
+lib
+include
+bin
+pyvenv.cfg
